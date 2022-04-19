@@ -9,7 +9,7 @@ require ('dotenv').config()
 const PORT = process.env.PORT || 3003
 
 // Database Connection //
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,  
   useUnifiedTopology: true,
@@ -25,10 +25,10 @@ db.on('disconnected', () => console.log('mongo disconnected'))
 app.use(cors())
 app.use(express.json())
 
-// Controllers //
 
+// Controllers //
 const user_controller = require('./controllers/userController')
-app.use('/', user_controller);
+app.use('/', user_controller)
 
 // Listener to make sure the server is runing alright 
 // Run npm start to see the message
