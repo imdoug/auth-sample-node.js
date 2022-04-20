@@ -73,12 +73,16 @@ router.post("/tokenIsValid", async (req, res) => {
       }
 })
 // auth here in between means that only users logged in have the power to make api calls
-router.get("/", auth,  async (req, res) => {
+router.get("/",  async (req, res) => {
+      let data = []
       User.find({}, (error, users) => {
             error?
             console.log(error)
             :
-            res.json(users)
+            users.forEach(element => {
+                  data.push({_id: element._id, username: element.username, email: element.email})
+            });
+            res.json(data)
       })
 })
 
